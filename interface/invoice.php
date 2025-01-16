@@ -11,7 +11,8 @@
             font-family: serif;
             margin: 0;
             padding: 0;
-            font-size: 12px;
+            font-size: 14px;
+            font-weight: bold;
         }
 
         .invoice {
@@ -22,7 +23,6 @@
 
         .invoice-header {
             text-align: center;
-            margin-bottom: 20px;
         }
 
         .invoice-header h1 {
@@ -32,20 +32,19 @@
 
         .invoice-header p {
             margin: 5px 0;
-            font-size: 13px;
+            font-size: 14px;
         }
 
         .invoice-details p {
             margin: 0px;
             font-weight: bold;
-            font-size: 12px;
-            line-height: 22px;
+            font-size: 13px;
+            line-height: 18px;
         }
 
         .invoice-items {
             width: 100%;
             border-collapse: collapse;
-            margin-bottom: 20px;
         }
 
         .invoice-items th,
@@ -54,19 +53,19 @@
             padding-left: 4px;
             padding-right: 4px;
             text-align: left;
-            font-size: 12px;
+            font-size: 14px;
             text-align: right;
+            list-style: 18px !important;
         }
 
         .invoice-items th {
-            font-size: 12px;
+            font-size: 13px;
             text-align: center;
         }
 
         .invoice-total {
             text-align: right;
-            font-size: 12px;
-            margin-top: 20px;
+            font-size: 14px;
         }
 
         .text-left {
@@ -79,7 +78,7 @@
 
         @media print {
             @page {
-                size: A5 portrait;
+                size: A5 landscape;
                 /* Hoặc 'A5 landscape' 'portrait nếu muốn in ngang */
                 background-color: red;
                 padding: 0;
@@ -112,10 +111,13 @@ function render_invoice($invoice)
     <div class="invoice no-page-break-inside">
         <div class="invoice-header">
             <div class="d-flex justify-content-between gap-3">
-                <h6 class="fw-bold" style="white-space: nowrap">TÔM GIỐNG <span style="color: #367d55">TÂN NGUYÊN</span></h6>
-                <h6 class="fw-bold" style="font-size: 13px;">Địa chỉ: 246, Yên Thạnh, Thường Thạnh, Cái Răng, Cần Thơ</h6>
+                <h6 class="fw-bold" style="white-space: nowrap">TÔM GIỐNG TÂN NGUYÊN</h6>
+                <div>
+                    <h6 class="fw-bold" style="font-size: 13px;">Địa chỉ: 246, Yên Thạnh, Thường Thạnh, Cái Răng, Cần Thơ</h6>
+                    <p></p>
+                </div>
             </div>
-            <h1 class="fw-bold my-4" style="color: #367d55">HÓA ĐƠN BÁN HÀNG</h1>
+            <h1 class="fw-bold my-2">HÓA ĐƠN BÁN HÀNG</h1>
         </div>
 
         <div class="invoice-details">
@@ -132,7 +134,7 @@ function render_invoice($invoice)
             </div>
         </div>
 
-        <table class="invoice-items my-3">
+        <table class="invoice-items">
             <thead>
                 <tr>
                     <th>TT</th>
@@ -193,16 +195,16 @@ function render_invoice($invoice)
             </tbody>
         </table>
         <div class="invoice-footer">
-            <p class="text-uppercase fw-bold">Ghi chú: </p>
-            <p class="text-end fw-bold fst-italic">Ngày ___ tháng ___ năm 2025</p>
+            <p class="text-uppercase fw-bold p-0 m-0">Ghi chú: </p>
+            <p class="text-end fw-bold fst-italic p-0 m-0">Ngày ___ tháng ___ năm 2025</p>
             <div class="d-flex fw-bold justify-content-between gap-3">
                 <div>
-                    <p class="text-uppercase">Người lập phiếu</p>
+                    <p class="text-uppercase p-0 m-0">Người lập phiếu</p>
                     <p class="text-center text-uppercase" style="margin-top: 46px"><?= $invoice['lapPhieu'] ?></p>
                 </div>
 
                 <div>
-                    <p class="text-uppercase text-center">CHỦ DOANH NGHIỆP</p>
+                    <p class="text-uppercase text-center p-0 m-0">CHỦ DOANH NGHIỆP</p>
                     <p class="text-center text-uppercase" style="margin-top: 46px;">Trần Kim Huệ</p>
                 </div>
             </div>

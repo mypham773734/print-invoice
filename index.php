@@ -82,9 +82,20 @@ class uploadFileExcel
     }
 
     public function tinhLuongKhuyenMai($row){
-        $khuyenMai = !empty($row[14]) ? strval(str_replace('.', '', $row[15])) : 1;
-        $gia = !empty($row[13]) ? strval(str_replace('.', '', $row[14])) : 1;
-        return (int) round($khuyenMai/$gia);
+        $result = 0;
+        $character_search = str_split(',. ');
+        $khuyenMai = 0;
+        if(!empty($row[15])){
+            $khuyenMai = strval(str_replace($character_search, '', $row[15]));
+        }
+        
+        $gia = 0;
+        if(!empty($row[14])){
+            $gia = strval(str_replace('.', '', $row[14]));
+        }
+        
+        $result = ($khuyenMai != 0 && $gia !=0) ? (int) round($khuyenMai/$gia) : $result; 
+        return $result;
     }
 
     public function tinhLuongTinhTien($row){
