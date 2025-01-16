@@ -41,7 +41,7 @@ class uploadFileExcel
                             'tenHang'       => $this->tinhTenHang($row),
                             'luongTinhTien' => $this->tinhLuongTinhTien($row),
                             'luongKhuyenMai'     => $this->tinhLuongKhuyenMai($row),
-                            'soThung'       => (int) ($row[8] ?? $row[9] ?? $row[10] ?? $row[11] ?? $row[12] ?? 0), 
+                            'soThung'       => (int) ($row[8] ?? $row[9] ?? $row[10] ?? $row[11] ?? $row[12] ?? $row[13] ?? 0), 
                             'mau'           => $this->tinhMau($row), 
                             'manAo'         => $row[14],
                             'giaTien'           => $row[15],
