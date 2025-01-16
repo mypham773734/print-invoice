@@ -56,6 +56,7 @@
             font-size: 14px;
             text-align: right;
             list-style: 18px !important;
+            border: 1px solid;
         }
 
         .invoice-items th {
@@ -104,17 +105,30 @@
 <?php
 function render_invoice($invoice)
 {
-
-    $list_vat_tu = ['vatTu_M' => 'Men TN69', 'vatTu_C1' => 'Vitamin C', 'vatTu_TAO' => 'Thức ăn tự nhiên', 'vatTu_ZEO' => 'Yucca Zeo'];
+    $date = date('d');
+    $month = date('m');
+    $year = date('Y');
+    $list_vat_tu = ['vatTu_M' => 'Men TN69', 'vatTu_C1' => 'Vitamin C', 'vatTu_TAO' => 'Thức ăn tự nhiên', 'vatTu_ZEO' => 'Yucca Zeo', 'vatTu_EDTA' => 'EDTA'];
     $total_thung = $invoice['soThung'];
+    $nhan_vien = [
+        'Huỳnh Thị Mỷ Hạnh', 
+        'Nguyễn Thị Kim Hồng', 
+        'Huỳnh Nguyễn Thúy Quỳnh',
+        'Đỗ Thị Bích Châm', 
+        'Phan Diệp Kim Xuân',
+    ];
+
+    $ten_lap_phieu = $invoice['lapPhieu'];
+    
+    $ho_ten_lap_phieu = get_name($nhan_vien, $ten_lap_phieu);
 ?>
     <div class="invoice no-page-break-inside">
         <div class="invoice-header">
             <div class="d-flex justify-content-between gap-3">
                 <h6 class="fw-bold" style="white-space: nowrap">TÔM GIỐNG TÂN NGUYÊN</h6>
                 <div>
-                    <h6 class="fw-bold" style="font-size: 13px;">Địa chỉ: 246, Yên Thạnh, Thường Thạnh, Cái Răng, Cần Thơ</h6>
-                    <p></p>
+                    <h6 class="fw-bold m-0" style="font-size: 13px;">Địa chỉ: 246, Yên Thạnh, Thường Thạnh, Cái Răng, Cần Thơ</h6>
+                    <p class="m-0">ĐT: 0972 819 819</p>
                 </div>
             </div>
             <h1 class="fw-bold my-2">HÓA ĐƠN BÁN HÀNG</h1>
@@ -134,7 +148,7 @@ function render_invoice($invoice)
             </div>
         </div>
 
-        <table class="invoice-items">
+        <table class="invoice-items ">
             <thead>
                 <tr>
                     <th>TT</th>
@@ -196,11 +210,11 @@ function render_invoice($invoice)
         </table>
         <div class="invoice-footer">
             <p class="text-uppercase fw-bold p-0 m-0">Ghi chú: </p>
-            <p class="text-end fw-bold fst-italic p-0 m-0">Ngày ___ tháng ___ năm 2025</p>
+            <p class="text-end fw-bold fst-italic p-0 m-0">Ngày <?= $date ?> tháng <?= $month ?> năm <?= $year ?></p>
             <div class="d-flex fw-bold justify-content-between gap-3">
                 <div>
                     <p class="text-uppercase p-0 m-0">Người lập phiếu</p>
-                    <p class="text-center text-uppercase" style="margin-top: 46px"><?= $invoice['lapPhieu'] ?></p>
+                    <p class="text-center text-uppercase" style="margin-top: 46px"><?= $ho_ten_lap_phieu ?></p>
                 </div>
 
                 <div>
@@ -211,4 +225,13 @@ function render_invoice($invoice)
         </div>
     </div>
 <?php
+}
+
+function get_name($nhan_vien, $lap_phieu){
+    $ten_lap_phieu = mb_strtolower($lap_phieu, 'UTF-8');
+    foreach($nhan_vien as $ho_ten){
+        $ho_ten_lowercase = $ho_ten ? mb_strtolower($ho_ten, 'UTF-8') : '';
+        if(strpos($ho_ten_lowercase, $ten_lap_phieu)) return $ho_ten;
+    }
+    return true;
 }

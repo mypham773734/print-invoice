@@ -11,7 +11,9 @@ if (isset($_POST['submit'])) $toolUploadFile->handleFile();
 
 class uploadFileExcel
 {
-    public function __construct() {}
+    public function __construct() {
+        date_default_timezone_set('Asia/Ho_Chi_Minh');
+    }
 
     public function render_ui()
     {
@@ -35,23 +37,27 @@ class uploadFileExcel
                             'tenKhachHang'  => $row[6] ?? '',
                             'soDienThoai'   => $row[7] ?? '', 
                             'diaChi'        => $row[5] ?? '', 
-                            'thanhToan'     => $row[32] ?? 0,
+                            'thanhToan'     => $row[33] ?? 0,
                             'tenHang'       => $this->tinhTenHang($row),
                             'luongTinhTien' => $this->tinhLuongTinhTien($row),
                             'luongKhuyenMai'     => $this->tinhLuongKhuyenMai($row),
                             'soThung'       => (int) ($row[8] ?? $row[9] ?? $row[10] ?? $row[11] ?? $row[12] ?? 0), 
                             'mau'           => $this->tinhMau($row), 
-                            'manAo'         => $row[13],
-                            'giaTien'           => $row[14],
-                            'thanhTien'     => $row[16],
-                            'vatTu_M'       => (int) $row[17] ?? 0,
-                            'vatTu_C1'       => (int) $row[18] ?? 0,
-                            'vatTu_TAO'       => (int) $row[19] ?? 0,
-                            'vatTu_ZEO'       => (int) $row[20] ?? 0,
+                            'manAo'         => $row[14],
+                            'giaTien'           => $row[15],
+                            'thanhTien'     => $row[17],
+                            'vatTu_M'       => (int) $row[18] ?? 0,
+                            'vatTu_C1'       => (int) $row[19] ?? 0,
+                            'vatTu_TAO'       => (int) $row[20] ?? 0,
+                            'vatTu_ZEO'       => (int) $row[21] ?? 0,
+                            'vatTu_EDTA'       => (int) $row[22] ?? 0,
                             'lapPhieu'      => $row[2] ?? '',
+                            'phuongThucThanhToan'      => $row[34] ?? '',
                         ];
                     }
-    
+                    // echo "<pre>";
+                    // print_r($dataExcel);
+                    // echo "</pre>";
                     $this->render_hoa_don($dataExcel);
                     
                 } catch (Exception $e) {
@@ -71,36 +77,39 @@ class uploadFileExcel
         if(!empty($row[10])) return 'Tôm sú giống Tân Nguyên 68';
         if(!empty($row[11])) return 'Tôm thẻ giống Tân Nguyên';
         if(!empty($row[12])) return 'Tôm thẻ giống Tân Nguyên cộng';
+        if(!empty($row[13])) return 'Cua';
     }
 
     public function tinhMau($row){
-        if(!empty($row[8])) return '14000';
-        if(!empty($row[9])) return '12000';
-        if(!empty($row[10])) return '6000';
-        if(!empty($row[11])) return '14000';
-        if(!empty($row[12])) return '12000';
+        if(!empty($row[8])) return '2000';
+        if(!empty($row[9])) return '2000';
+        if(!empty($row[10])) return '1000';
+        if(!empty($row[11])) return '2000';
+        if(!empty($row[12])) return '1800';
+        if(!empty($row[13])) return '500';
     }
 
     public function tinhLuongKhuyenMai($row){
         $result = 0;
         $character_search = str_split(',. ');
         $khuyenMai = 0;
-        if(!empty($row[15])){
-            $khuyenMai = strval(str_replace($character_search, '', $row[15]));
+        if(!empty($row[16])){
+            $khuyenMai = strval(str_replace($character_search, '', $row[16]));
         }
         
         $gia = 0;
-        if(!empty($row[14])){
-            $gia = strval(str_replace('.', '', $row[14]));
+        if(!empty($row[15])){
+            $gia = strval(str_replace($character_search, '', $row[15]));
         }
+
+        $result = ($khuyenMai != 0 && $gia != 0) ? (int) round($khuyenMai/$gia) : 0; 
         
-        $result = ($khuyenMai != 0 && $gia !=0) ? (int) round($khuyenMai/$gia) : $result; 
         return $result;
     }
 
     public function tinhLuongTinhTien($row){
         $luongKhuyenMai = $this->tinhLuongKhuyenMai($row);
-        $tongThung = $row[8] ?? $row[9] ?? $row[10] ?? $row[11] ?? $row[12] ?? 0;
+        $tongThung = $row[8] ?? $row[9] ?? $row[10] ?? $row[11] ?? $row[12] ?? $row[13] ?? 0;
 
         if($tongThung == 0) return 0;
         $luongTinhTien = (int) $tongThung - $luongKhuyenMai;
