@@ -3,8 +3,8 @@ name: Release Dev
 on:
   push:
     branches: [ "release/dev" ]
-  pull_request:
-    branches: [ "release/dev" ]
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -60,3 +60,4 @@ jobs:
         username: ${{ secrets.ftp_username }}
         password: ${{ secrets.ftp_password }}
         server-dir: ./deploy/
+        log-level: 'minimal'
