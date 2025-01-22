@@ -116,6 +116,16 @@ function render_invoice($invoice)
         'Huỳnh Nguyễn Thúy Quỳnh',
         'Đỗ Thị Bích Châm', 
         'Phan Diệp Kim Xuân',
+        'Nguyễn Thùy Linh',
+        'Thạch Thị Thu Nga',
+        'Đồ Thị Phương Trinh',
+        'Tăng Thị Bé Ngọc',
+        'Mai N.Duyên',
+        'Trương T.Duyên',
+        'Đặng C.Anh',
+        'Tô Thị Yến Nhi',
+        'Trần Thị Thanh Tâm',
+
     ];
 
     $ten_lap_phieu = $invoice['lapPhieu'];
