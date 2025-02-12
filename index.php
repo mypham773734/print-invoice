@@ -35,14 +35,17 @@ class uploadFileExcel
                         if($key == 0 || empty($row[6])) continue;
                         $dataExcel[] = [
                             'tenKhachHang'  => $row[6] ?? '',
+                            'ngayIn'  => $row[4] ?? '',
                             'soDienThoai'   => $row[7] ?? '', 
                             'diaChi'        => $row[5] ?? '', 
+                            'tienChu'        => $row[34] ?? '', 
                             'thanhToan'     => $row[33] ?? 0,
                             'tenHang'       => $this->tinhTenHang($row),
                             'luongTinhTien' => $this->tinhLuongTinhTien($row),
-                            'luongKhuyenMai'     => $this->tinhLuongKhuyenMai($row),
+                            'luongKhuyenMai'     => $row[16] ?? '', 
                             'soThung'       => (int) ($row[8] ?? $row[9] ?? $row[10] ?? $row[11] ?? $row[12] ?? $row[13] ?? 0), 
                             'mau'           => $this->tinhMau($row), 
+                            'canNangVatTu'           => $this->luongVattu($row),
                             'manAo'         => $row[14],
                             'giaTien'           => $row[15],
                             'thanhTien'     => $row[17],
@@ -52,7 +55,7 @@ class uploadFileExcel
                             'vatTu_ZEO'       => (int) $row[21] ?? 0,
                             'vatTu_EDTA'       => (int) $row[22] ?? 0,
                             'lapPhieu'      => $row[2] ?? '',
-                            'phuongThucThanhToan'      => $row[34] ?? '',
+                            'tienChu'      => $row[34] ?? '',
                         ];
                     }
                     // echo "<pre>";
@@ -72,21 +75,36 @@ class uploadFileExcel
     }
 
     public function tinhTenHang($row){
-        if(!empty($row[8])) return 'Tôm sú giống Tân Nguyên';
-        if(!empty($row[9])) return 'Tôm sú giống Tân Nguyên cộng';
-        if(!empty($row[10])) return 'Tôm sú giống Tân Nguyên 68';
-        if(!empty($row[11])) return 'Tôm thẻ giống Tân Nguyên';
-        if(!empty($row[12])) return 'Tôm thẻ giống Tân Nguyên cộng';
+        if(!empty($row[8])) return 'Sú Tân Nguyên';
+        if(!empty($row[9])) return 'Sú Tân Nguyên +';
+        if(!empty($row[10])) return 'Sú Tân Nguyên 68';
+        if(!empty($row[11])) return 'Thẻ Tân Nguyên';
+        if(!empty($row[12])) return 'Thẻ Tân Nguyên +';
         if(!empty($row[13])) return 'Cua';
     }
 
-    public function tinhMau($row){
-        if(!empty($row[8])) return '2000';
-        if(!empty($row[9])) return '2000';
-        if(!empty($row[10])) return '1000';
-        if(!empty($row[11])) return '2000';
-        if(!empty($row[12])) return '1800';
+    public function tinhMau($row): int|string{
+        if(!empty($row[8])) return '14.000c/thùng';
+        if(!empty($row[9])) return '12.000c/thùng';
+        if(!empty($row[10])) return '6.000c/thùng';
+        if(!empty($row[11])) return '14.000c/thùng';
+        if(!empty($row[12])) return '12.000c/thùng';
         if(!empty($row[13])) return '500';
+    }
+    
+    public function tenVatTu($row){
+        if(!empty($row[18])) return 'Men HT85';
+        if(!empty($row[19])) return 'Vitamin C';
+        if(!empty($row[20])) return 'Tạo Thức ăn tự nhiên';
+        if(!empty($row[21])) return 'Yucca Zeo';
+        if(!empty($row[22])) return 'EDTA';
+    }
+    public function luongVattu($row): int|string{
+        if(!empty($row[18])) return '3kg';
+        if(!empty($row[19])) return '1kg';
+        if(!empty($row[20])) return '5kg';
+        if(!empty($row[21])) return '10kg';
+        if(!empty($row[22])) return '10kg';
     }
 
     public function tinhLuongKhuyenMai($row){

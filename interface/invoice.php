@@ -108,23 +108,20 @@ function render_invoice($invoice)
     $date = date('d');
     $month = date('m');
     $year = date('Y');
-    $list_vat_tu = ['vatTu_M' => 'Men TN69', 'vatTu_C1' => 'Vitamin C', 'vatTu_TAO' => 'Thức ăn tự nhiên', 'vatTu_ZEO' => 'Yucca Zeo', 'vatTu_EDTA' => 'EDTA'];
+    $list_vat_tu = ['vatTu_M' => 'Men HT85', 'vatTu_C1' => 'Vitamin C', 'vatTu_TAO' => ' Tạo Thức ăn tự nhiên', 'vatTu_ZEO' => 'Yucca Zeo', 'vatTu_EDTA' => 'EDTA'];
     $total_thung = $invoice['soThung'];
     $nhan_vien = [
-        'Huỳnh Thị Mỷ Hạnh', 
-        'Nguyễn Thị Kim Hồng', 
-        'Huỳnh Nguyễn Thúy Quỳnh',
-        'Đỗ Thị Bích Châm', 
-        'Phan Diệp Kim Xuân',
-        'Nguyễn Thùy Linh',
-        'Thạch Thị Thu Nga',
-        'Đồ Thị Phương Trinh',
-        'Tăng Thị Bé Ngọc',
-        'Mai N.Duyên',
-        'Trương T.Duyên',
-        'Đặng C.Anh',
-        'Tô Thị Yến Nhi',
-        'Trần Thị Thanh Tâm',
+        'Huỳnh Thị Mỷ Hạnh 0949 262 281', 
+        'Nguyễn Thị Kim Hồng 0941 092 044 ', 
+        'Huỳnh Nguyễn Thúy Quỳnh 0946 089 010',
+        'Đỗ Thị Bích Châm 0943 071 474', 
+        'Phan Diệp Kim Xuân 0943 478 017',
+        // 'Nguyễn Thùy Linh',
+        // 'Thạch Thị Thu Nga',
+        // 'Đồ Thị Phương Trinh',
+        // 'Tăng Thị Bé Ngọc',
+        // 'Mai N.Duyên',
+        // 'Trần Thị Thanh Tâm',
 
     ];
 
@@ -132,28 +129,32 @@ function render_invoice($invoice)
     
     $ho_ten_lap_phieu = get_name($nhan_vien, $ten_lap_phieu);
 ?>
-    <div class="invoice no-page-break-inside">
+    <!-- < class="invoice no-page-break-inside"> -->
         <div class="invoice-header">
-            <div class="d-flex justify-content-between gap-3">
-                <h6 class="fw-bold" style="white-space: nowrap">TÔM GIỐNG TÂN NGUYÊN</h6>
-                <div>
-                    <h6 class="fw-bold m-0" style="font-size: 13px;">Địa chỉ: 246, Yên Thạnh, Thường Thạnh, Cái Răng, Cần Thơ</h6>
-                    <p class="m-0">ĐT: 0972 819 819</p>
-                </div>
+            <!-- <div class="d-flex justify-content-between gap-3"> -->
+                <!-- <h6 class="fw-bold" style="white-space: nowrap">TÔM GIỐNG TÂN NGUYÊN</h6> -->
+                <div style="text-align: center;">
+    <h6 class="fw-bold" style="white-space: nowrap;">TÔM GIỐNG TÂN NGUYÊN</h6>
+    <h6 class="fw-bold m-0" style="font-size: 13px;">ĐỊA CHỈ: 246, YÊN THẠNH, THƯỜNG THẠNH, CÁI RĂNG, TP CẦN THƠ</h6>
+    <p class="m-0">ĐT: 0973 819 819</p>
+</div>  
+               
             </div>
-            <h1 class="fw-bold my-2">HÓA ĐƠN BÁN HÀNG</h1>
-        </div>
+            <h6 style="text-align: center;" class="fw-bold my-2">PHIẾU GIAO HÀNG</h6>
+        <h6 style="text-align: center;">
+            <i>(Phiếu giao hàng này không có giá trị thay thế hóa đơn tài chính)</i></h6>
+
 
         <div class="invoice-details">
             <div class="row">
                 <div class="col-6">
-                    <p>Tên khách hàng: <?= $invoice['tenKhachHang'] ?? '' ?></p>
-                    <p>Địa chỉ: <?= $invoice['diaChi'] ?? '' ?></p>
-                    <p>Phương thức thanh toán: Tiền mặt</p>
+                    <p>TÊN KHÁCH HÀNG: <?= $invoice['tenKhachHang'] ?? '' ?></p>
+                    <p>ĐỊA CHỈ NHẬN HÀNG: <?= $invoice['diaChi'] ?? '' ?></p>
+                    <!-- <p>Phương thức thanh toán: Tiền mặt</p> -->
                 </div>
                 <div class="col-6">
-                    <p>Số điện thoại: <?= $invoice['soDienThoai'] ?? '' ?></p>
-                    <p>Nơi nhận: <?= $invoice['diaChi'] ?? '' ?></p>
+                <p>NGÀY GIAO HÀNG: <?= $invoice['ngayIn'] ?? '' ?></p>
+                    <p>SỐ ĐIỆN THOẠI: <?= $invoice['soDienThoai'] ?? '' ?></p>
                 </div>
             </div>
         </div>
@@ -162,27 +163,29 @@ function render_invoice($invoice)
             <thead>
                 <tr>
                     <th>TT</th>
-                    <th style="width: 160px;">TÊN HÀNG</th>
-                    <th>LƯỢNG TÍNH TIỀN</th>
-                    <th>LƯỢNG K.MÃI</th>
-                    <th>SỐ THÙNG</th>
-                    <th>Mấu (con/bao)</th>
-                    <th>MẶN AO</th>
+                    <th style="width: 160px;">TÊN SẢN PHẨM</th>
+                    <th>QUY CÁCH</th>
+                    <th>SỐ LƯỢNG</th>
                     <th>GIÁ</th>
+                    <!-- <th>LƯỢNG TÍNH TIỀN</th> -->
+                    <th>KHUYẾN MÃI</th>
+                    <!-- <th>MẶN AO</th> -->
                     <th>THÀNH TIỀN</th>
+                    <th>GHI CHÚ</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td class="text-center">1</td>
                     <td class="text-left"><?= $invoice['tenHang'] ?? '' ?></td>
-                    <td><?= $invoice['luongTinhTien'] ?? '' ?></td>
-                    <td><?= $invoice['luongKhuyenMai'] ?></td>
-                    <td><?= $invoice['soThung'] ?? '' ?></td>
-                    <td><?= $invoice['mau'] ?? '' ?></td>
-                    <td><?= $invoice['manAo'] ?? '' ?></td>
-                    <td><?= $invoice['giaTien'] ?? '' ?></td>
-                    <td><?= $invoice['thanhTien'] ?? '' ?></td>
+                    <td class="text-center"><?= $invoice['mau'] ?? '' ?></td>
+                    <td class="text-center"><?= $invoice['soThung'] ?? '' ?></td>
+                    <td class="text-center"><?= $invoice['giaTien'] ?? '' ?></td>
+                    <td class="text-center"><?= $invoice['luongKhuyenMai'] ?></td>
+                    <!-- <td><?= $invoice['luongTinhTien'] ?? '' ?></td> -->
+                    <!-- <td><?= $invoice['manAo'] ?? '' ?></td> -->
+                    <td class="text-center"><?= $invoice['thanhTien'] ?? '' ?></td>
+                    <td></td>
                 </tr>
                 <?php
                 $index = 1;
@@ -194,42 +197,52 @@ function render_invoice($invoice)
                         <tr>
                             <td class="text-center"><?= $index ?></td>
                             <td class="text-left"><?= $list_vat_tu[$key] ?? '' ?></td>
+                            <td >
+                            <?= $invoice['canNangVatTu'] ?? '' ?>
+                            
+                            </td>
+                            <!-- <td></td> -->
+                            <td class="text-center"><?= $invoice[$key] ?? '' ?></td>
+                            <td class="text-center">0 đ</td>
+                            <td class="text-center">0 đ</td>
+                            <td class="text-center">0 đ</td>
                             <td></td>
-                            <td></td>
-                            <td><?= $invoice[$key] ?? '' ?></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <!-- <td></td> -->
                         </tr>
                 <?php }
                 }
                 ?>
 
                 <tr>
-                    <td class="text-center text-uppercase fw-bold" colspan="2">Tổng cộng</td>
-                    <td><?= $invoice['luongTinhTien'] ?? '' ?></td>
-                    <td><?= $invoice['luongKhuyenMai'] ?></td>
-                    <td><?= $total_thung ?></td>
+                    <td class="text-center text-uppercase fw-bold" colspan="2">TỔNG</td>
+                    <!-- <td class="text-center"><?= $invoice['luongTinhTien'] ?? '' ?></td>
+                    <td class="text-center"><?= $invoice['luongKhuyenMai'] ?></td>
+                    <td class="text-center"><?= $total_thung ?></td> -->
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td><?= $invoice['thanhTien'] ?? '' ?></td>
+                    <td></td>
+                    <td class="text-center"><?= $invoice['thanhTien'] ?? '' ?></td>
+                    <td></td>
                 </tr>
             </tbody>
         </table>
         <div class="invoice-footer">
-            <p class="text-uppercase fw-bold p-0 m-0">Ghi chú: </p>
-            <p class="text-end fw-bold fst-italic p-0 m-0">Ngày <?= $date ?> tháng <?= $month ?> năm <?= $year ?></p>
+            <!-- <p class="text-uppercase fw-bold p-0 m-0">Ghi chú: </p> -->
+            <!-- <p class="text-end fw-bold fst-italic p-0 m-0">Ngày <?= $date ?> tháng <?= $month ?> năm <?= $year ?></p> -->
+            <div>
+                    <p>Số tiền ghi bằng chữ: <?= $invoice['tienChu'] ?? '' ?> </p>
+                </div>
             <div class="d-flex fw-bold justify-content-between gap-3">
+              
                 <div>
                     <p class="text-uppercase p-0 m-0">Người lập phiếu</p>
                     <p class="text-center text-uppercase" style="margin-top: 46px"><?= $ho_ten_lap_phieu ?></p>
                 </div>
 
                 <div>
-                    <p class="text-uppercase text-center p-0 m-0">CHỦ DOANH NGHIỆP</p>
-                    <p class="text-center text-uppercase" style="margin-top: 46px;">Trần Kim Huệ</p>
+                    <p class="text-uppercase text-center p-0 m-0">TRƯỞNG PHÒNG KINH DOANH</p>
+                    <p class="text-center text-uppercase" style="margin-top: 46px;">HUỲNH THỊ MỶ HẠNH</p>
                 </div>
             </div>
         </div>
