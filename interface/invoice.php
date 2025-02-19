@@ -143,9 +143,9 @@ function render_invoice($invoice)
         'Huỳnh Nguyễn Thúy Quỳnh 0946 089 010',
         'Đỗ Thị Bích Châm 0943 071 474',
         'Phan Diệp Kim Xuân 0943 478 017',
-        // 'Nguyễn Thùy Linh',
-        // 'Thạch Thị Thu Nga',
-        // 'Đồ Thị Phương Trinh',
+        'Nguyễn Thùy Linh',
+        'Thạch Thị Thu Nga',
+        'Đồ Thị Phương Trinh',
         // 'Tăng Thị Bé Ngọc',
         // 'Mai N.Duyên',
         // 'Trần Thị Thanh Tâm',
@@ -262,18 +262,18 @@ function render_invoice($invoice)
             <!-- <p class="text-uppercase fw-bold p-0 m-0">Ghi chú: </p> -->
             <!-- <p class="text-end fw-bold fst-italic p-0 m-0">Ngày <?= $date ?> tháng <?= $month ?> năm <?= $year ?></p> -->
             <div>
-                <p>Số tiền ghi bằng chữ: <?= $invoice['tienChu'] ?? '' ?> </p>
+                <p style="font-style: italic;">Số tiền ghi bằng chữ: <?= $invoice['tienChu'] ?? '' ?> </p>
             </div>
             <div class="d-flex fw-bold justify-content-between gap-3">
 
                 <div>
                     <p class="text-uppercase p-0 m-0">Người lập phiếu</p>
-                    <p class="text-center text-uppercase" style="margin-top: 46px"><?= $ho_ten_lap_phieu ?></p>
+                    <!-- <p class="text-center text-uppercase" style="margin-top: 46px"><?= $ho_ten_lap_phieu ?></p> -->
                 </div>
 
                 <div>
                     <p class="text-uppercase text-center p-0 m-0">TRƯỞNG PHÒNG KINH DOANH</p>
-                    <p class="text-center text-uppercase" style="margin-top: 46px;">HUỲNH THỊ MỶ HẠNH</p>
+                    <!-- <p class="text-center text-uppercase" style="margin-top: 46px;">NGUYỄN THÙY LINH</p> -->
                 </div>
             </div>
         </div>
