@@ -103,35 +103,38 @@
 </html>
 
 <?php
+
 function render_invoice($invoice)
 {
     $date = date('d');
     $month = date('m');
     $year = date('Y');
+    $totalThanhTien = 0;
+    $totalKhuyenMai = 0;
     $list_vat_tu = [
         'vatTu_M' => [
             'ten' => 'Men HT85',
-            'quy_cach' => '3kg',
+            'quy_cach' => '3kg/túi',
             'gia'   => '120000',
         ],
         'vatTu_C1' => [
             'ten' => 'Vitamin C',
-            'quy_cach' => '1kg',
+            'quy_cach' => '1kg/túi',
             'gia'   => '50000',
         ],
         'vatTu_TAO' => [
             'ten' => 'Tạo Thức ăn tự nhiên',
-            'quy_cach' => '5kg',
+            'quy_cach' => '5kg/thùng',
             'gia'   => '120000',
         ],
         'vatTu_ZEO' => [
             'ten' => 'Yucca Zeo',
-            'quy_cach' => '10kg',
+            'quy_cach' => '10kg/bao',
             'gia'  => '140000',
         ],
         'vatTu_EDTA' => [
             'ten' => 'EDTA',
-            'quy_cach' => '10kg',
+            'quy_cach' => '10kg/bao',
             'gia'   => '160000',
         ],
     ];
@@ -167,7 +170,7 @@ function render_invoice($invoice)
             </div>
 
         </div>
-        <h6 style="text-align: center;" class="fw-bold my-2">PHIẾU GIAO HÀNG</h6>
+        <h6 style="text-align: center;" class="fw-bold my-2">PHIẾU GIAO HÀNG KÈM HÓA ĐƠN THU TIỀN</h6>
         <h6 style="text-align: center;">
             <i>(Phiếu giao hàng này không có giá trị thay thế hóa đơn tài chính)</i>
         </h6>
@@ -176,8 +179,8 @@ function render_invoice($invoice)
         <div class="invoice-details">
             <div class="row">
                 <div class="col-6">
-                    <p>TÊN KHÁCH HÀNG: <?= $invoice['tenKhachHang'] ?? '' ?></p>
-                    <p>ĐỊA CHỈ NHẬN HÀNG: <?= $invoice['diaChi'] ?? '' ?></p>
+                    <p style="margin-left: 20px;">TÊN KHÁCH HÀNG: <?= $invoice['tenKhachHang'] ?? '' ?></p>
+                    <p style="margin-left: 20px;">ĐỊA CHỈ NHẬN HÀNG: <?= $invoice['diaChi'] ?? '' ?></p>
                     <!-- <p>Phương thức thanh toán: Tiền mặt</p> -->
                 </div>
                 <div class="col-6">
@@ -196,10 +199,11 @@ function render_invoice($invoice)
                     <th style="width: 80px;">SỐ LƯỢNG</th>
                     <th>GIÁ</th>
                     <!-- <th>LƯỢNG TÍNH TIỀN</th> -->
+                    <th>THÀNH TIỀN</th>
                     <th>KHUYẾN MÃI</th>
                     <!-- <th>MẶN AO</th> -->
-                    <th>THÀNH TIỀN</th>
-                    <th style="width: 120px;">GHI CHÚ</th>
+                    <!-- <th>THÀNH TIỀN</th> -->
+                    <th style="width: 120px;">TIỀN THỰC TRẢ</th>
                 </tr>
             </thead>
             <tbody>
@@ -209,18 +213,24 @@ function render_invoice($invoice)
                     <td class="text-center"><?= $invoice['mau'] ?? '' ?></td>
                     <td class="text-center"><?= $invoice['soThung'] ?? '' ?></td>
                     <td class="text-center"><?= $invoice['giaTien'] ?? '' ?></td>
+                    <td class="text-center"><?= $invoice['luongTinhTien'] ?? '' ?></td>
                     <td class="text-center"><?= $invoice['luongKhuyenMai'] ?></td>
-                    <!-- <td><?= $invoice['luongTinhTien'] ?? '' ?></td> -->
-                    <!-- <td><?= $invoice['manAo'] ?? '' ?></td> -->
                     <td class="text-center"><?= $invoice['thanhTien'] ?? '' ?></td>
-                    <td></td>
+                    <!-- <td><?= $invoice['manAo'] ?? '' ?></td> -->
+                   
+                   
                 </tr>
                 <?php
                 $index = 1;
+                $totalThanhTien = 0;
+                $totalKhuyenMai = 0;
                 foreach ($list_vat_tu as $key => $vat_tu) {
                     if ($invoice[$key] != 0) {
                         $index++;
                         $total_thung += $invoice[$key];
+                        $totalThanhTien += (int) str_replace(['.', ','], '', $invoice['thanhTien'] ?? 0);
+                        $totalKhuyenMai += (int) str_replace(['.', ','], '', $invoice['luongKhuyenMai'] ?? 0);
+
 
                         $khuyen_mai_VT = !empty($invoice[$key] * $list_vat_tu[$key]['gia']) ? number_format($invoice[$key] * $list_vat_tu[$key]['gia'], 0, ',', '.') : '0';
                         $thanh_tien_VT = '0';
@@ -235,9 +245,10 @@ function render_invoice($invoice)
                             <!-- <td></td> -->
                             <td class="text-center"><?= $invoice[$key] ?? '' ?></td>
                             <td class="text-center"><?= !empty($list_vat_tu[$key]['gia']) ? number_format($list_vat_tu[$key]['gia'], 0, ',', '.') : '0' ?></td>
+                            <!-- <td class="text-center"><?= $thanh_tien_VT ?></td> -->
                             <td class="text-center"><?= $khuyen_mai_VT ?></td>
-                            <td class="text-center"><?= $thanh_tien_VT ?></td>
-                            <td></td>
+                            <td class="text-center"><?= $khuyen_mai_VT ?></td>
+                            <td class="text-center">0đ</td>
                             <!-- <td></td> -->
                         </tr>
                 <?php }
@@ -252,9 +263,11 @@ function render_invoice($invoice)
                     <td class="text-center"><?= $total_thung ?></td>
                     <td></td>
                     <td></td>
-                    <!-- <td></td> -->
-                    <td class="text-center"><?= $invoice['thanhTien'] ?? '' ?></td>
                     <td></td>
+                    <!-- <td class="text-center"><b><?= number_format($totalThanhTien, 0, ',', '.') ?> đ</b></td>
+                    <td class="text-center"><b><?= number_format($totalKhuyenMai, 0, ',', '.') ?> đ</b></td> -->
+                    <td class="text-center"><?= $invoice['thanhTien'] ?? '' ?></td>
+
                 </tr>
             </tbody>
         </table>
@@ -262,17 +275,18 @@ function render_invoice($invoice)
             <!-- <p class="text-uppercase fw-bold p-0 m-0">Ghi chú: </p> -->
             <!-- <p class="text-end fw-bold fst-italic p-0 m-0">Ngày <?= $date ?> tháng <?= $month ?> năm <?= $year ?></p> -->
             <div>
-                <p style="font-style: italic;">Số tiền ghi bằng chữ: <?= $invoice['tienChu'] ?? '' ?> </p>
-            </div>
+            <p style="font-style: italic; text-align: right; padding-right: 100px;">
+    (Số tiền ghi bằng chữ: <?= htmlspecialchars($invoice['tienChu'] ?? 'Không có dữ liệu') ?>)
+</p>            </div>
             <div class="d-flex fw-bold justify-content-between gap-3">
 
                 <div>
-                    <p class="text-uppercase p-0 m-0">Người lập phiếu</p>
+                    <p  style="margin-left: 50px;">NGƯỜI LẬP PHIẾU</p>
                     <!-- <p class="text-center text-uppercase" style="margin-top: 46px"><?= $ho_ten_lap_phieu ?></p> -->
                 </div>
 
                 <div>
-                    <p class="text-uppercase text-center p-0 m-0">TRƯỞNG PHÒNG KINH DOANH</p>
+                    <p style="margin-right: 50px;">TRƯỞNG PHÒNG KINH DOANH</p>
                     <!-- <p class="text-center text-uppercase" style="margin-top: 46px;">NGUYỄN THÙY LINH</p> -->
                 </div>
             </div>
