@@ -194,13 +194,13 @@ function render_invoice($invoice)
             <thead>
                 <tr>
                     <th>TT</th>
-                    <th style="width: 160px;">TÊN SẢN PHẨM</th>
+                    <th style="width: 180px;">TÊN SẢN PHẨM</th>
                     <th>QUY CÁCH</th>
                     <th style="width: 80px;">SỐ LƯỢNG</th>
                     <th>GIÁ</th>
                     <!-- <th>LƯỢNG TÍNH TIỀN</th> -->
-                    <th>THÀNH TIỀN</th>
-                    <th>KHUYẾN MÃI</th>
+                    <th style="width: 140px;">THÀNH TIỀN</th>
+                    <th style="width: 140px;">KHUYẾN MÃI</th>
                     <!-- <th>MẶN AO</th> -->
                     <!-- <th>THÀNH TIỀN</th> -->
                     <th style="width: 120px;">TIỀN THỰC TRẢ</th>
