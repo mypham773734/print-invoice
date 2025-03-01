@@ -222,18 +222,20 @@ function render_invoice($invoice)
                 </tr>
                 <?php
                 $index = 1;
-                $totalThanhTien = 0;
-                $totalKhuyenMai = 0;
+                $totalThanhTien = $invoice['luongTinhTien'] ?? 0;
+                $totalThanhTien = (int) str_replace('.', '', $totalThanhTien);
+
+                $totalKhuyenMai = $invoice['luongKhuyenMai'] ?? 0;
+                $totalKhuyenMai = (int) str_replace('.', '', $totalKhuyenMai);
                 foreach ($list_vat_tu as $key => $vat_tu) {
                     if ($invoice[$key] != 0) {
                         $index++;
                         $total_thung += $invoice[$key];
-                        $totalThanhTien += (int) str_replace(['.', ','], '', $invoice['thanhTien'] ?? 0);
-                        $totalKhuyenMai += (int) str_replace(['.', ','], '', $invoice['luongKhuyenMai'] ?? 0);
-
 
                         $khuyen_mai_VT = !empty($invoice[$key] * $list_vat_tu[$key]['gia']) ? number_format($invoice[$key] * $list_vat_tu[$key]['gia'], 0, ',', '.') : '0';
                         $thanh_tien_VT = '0';
+                        $totalThanhTien += (int)!empty($invoice[$key] * $list_vat_tu[$key]['gia']) ? $invoice[$key] * $list_vat_tu[$key]['gia'] : 0;
+                        $totalKhuyenMai += (int)!empty($invoice[$key] * $list_vat_tu[$key]['gia']) ? $invoice[$key] * $list_vat_tu[$key]['gia'] : 0;
                 ?>
                         <tr>
                             <td class="text-center"><?= $index ?></td>
@@ -262,12 +264,10 @@ function render_invoice($invoice)
                     <td></td>
                     <td class="text-center"><?= $total_thung ?></td>
                     <td></td>
-                    <td></td>
-                    <td></td>
-                    <!-- <td class="text-center"><b><?= number_format($totalThanhTien, 0, ',', '.') ?> đ</b></td>
-                    <td class="text-center"><b><?= number_format($totalKhuyenMai, 0, ',', '.') ?> đ</b></td> -->
+                    <!-- <td class="text-center">12</td> -->
+                    <td class="text-center"><b><?= number_format($totalThanhTien, 0, ',', '.') ?> đ</b></td>
+                    <td class="text-center"><b><?= number_format($totalKhuyenMai, 0, ',', '.') ?> đ</b></td>
                     <td class="text-center"><?= $invoice['thanhTien'] ?? '' ?></td>
-
                 </tr>
             </tbody>
         </table>
