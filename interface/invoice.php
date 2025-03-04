@@ -115,12 +115,12 @@ function render_invoice($invoice)
         'vatTu_M' => [
             'ten' => 'Men HT85',
             'quy_cach' => '3kg/túi',
-            'gia'   => '120000',
+            'gia'   => '150000',
         ],
         'vatTu_C1' => [
             'ten' => 'Vitamin C',
             'quy_cach' => '1kg/túi',
-            'gia'   => '50000',
+            'gia'   => '60000',
         ],
         'vatTu_TAO' => [
             'ten' => 'Tạo Thức ăn tự nhiên',
@@ -130,7 +130,7 @@ function render_invoice($invoice)
         'vatTu_ZEO' => [
             'ten' => 'Yucca Zeo',
             'quy_cach' => '10kg/bao',
-            'gia'  => '140000',
+            'gia'  => '160000',
         ],
         'vatTu_EDTA' => [
             'ten' => 'EDTA',
