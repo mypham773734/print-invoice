@@ -123,9 +123,9 @@ function render_invoice($invoice)
             'gia'   => '60000',
         ],
         'vatTu_TAO' => [
-            'ten' => 'Tạo Thức ăn tự nhiên',
-            'quy_cach' => '5kg/thùng',
-            'gia'   => '120000',
+            'ten' => 'Thức ăn Vèo',
+            'quy_cach' => '1kg/thùng',
+            'gia'   => '150000',
         ],
         'vatTu_ZEO' => [
             'ten' => 'Yucca Zeo',
@@ -144,11 +144,11 @@ function render_invoice($invoice)
         'Huỳnh Thị Mỷ Hạnh 0949 262 281',
         'Nguyễn Thị Kim Hồng 0941 092 044 ',
         'Huỳnh Nguyễn Thúy Quỳnh 0946 089 010',
-        'Đỗ Thị Bích Châm 0943 071 474',
+        'Đỗ Thị Bích Châm 0949 811',
         'Phan Diệp Kim Xuân 0943 478 017',
         'Nguyễn Thùy Linh',
         'Thạch Thị Thu Nga',
-        'Đồ Thị Phương Trinh',
+        // 'Đồ Thị Phương Trinh',
         // 'Tăng Thị Bé Ngọc',
         // 'Mai N.Duyên',
         // 'Trần Thị Thanh Tâm',
@@ -276,7 +276,7 @@ function render_invoice($invoice)
             <!-- <p class="text-end fw-bold fst-italic p-0 m-0">Ngày <?= $date ?> tháng <?= $month ?> năm <?= $year ?></p> -->
             <div>
             <p style="font-style: italic; text-align: right; padding-right: 100px;">
-    (Số tiền ghi bằng chữ: <?= htmlspecialchars($invoice['tienChu'] ?? 'Không có dữ liệu') ?>)
+    (Ghi Chú: <?= htmlspecialchars($invoice['tienChu'] ?? 'Không có dữ liệu') ?>)
 </p>            </div>
             <div class="d-flex fw-bold justify-content-between gap-3">
 

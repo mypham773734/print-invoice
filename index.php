@@ -112,7 +112,7 @@ class uploadFileExcel
     {
         if (!empty($row[18])) return 'Men HT85';
         if (!empty($row[19])) return 'Vitamin C';
-        if (!empty($row[20])) return 'Tạo Thức ăn tự nhiên';
+        if (!empty($row[20])) return 'Tạo thức ăn tự nhiên';
         if (!empty($row[21])) return 'Yucca Zeo';
         if (!empty($row[22])) return 'EDTA';
     }
