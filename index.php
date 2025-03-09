@@ -60,11 +60,11 @@ class uploadFileExcel
                             'manAo'         => $row[14],
                             'giaTien'           => $row[15],
                             'thanhTien'     => $row[17],
-                            'vatTu_M'       => (int) $row[18] ?? 0,
-                            'vatTu_C1'       => (int) $row[19] ?? 0,
-                            'vatTu_TAO'       => (int) $row[20] ?? 0,
-                            'vatTu_ZEO'       => (int) $row[21] ?? 0,
-                            'vatTu_EDTA'       => (int) $row[22] ?? 0,
+                            'vatTu_M'       => (int) $row[19] ?? 0,
+                            'vatTu_C1'       => (int) $row[18] ?? 0,
+                            'vatTu_TAO'       => (int) $row[22] ?? 0,
+                            'vatTu_ZEO'       => (int) $row[20] ?? 0,
+                            'vatTu_EDTA'       => (int) $row[21] ?? 0,
                             'lapPhieu'      => $row[2] ?? '',
                             'tienChu'      => $row[34] ?? '',
                         ];
@@ -110,11 +110,11 @@ class uploadFileExcel
 
     public function tenVatTu($row)
     {
-        if (!empty($row[18])) return 'Men HT85';
-        if (!empty($row[19])) return 'Vitamin C';
-        if (!empty($row[20])) return 'Tạo thức ăn tự nhiên';
-        if (!empty($row[21])) return 'Yucca Zeo';
-        if (!empty($row[22])) return 'EDTA';
+        if (!empty($row[19])) return 'Men HT85';
+        if (!empty($row[18])) return 'Vitamin C';
+        if (!empty($row[22])) return 'Thức ăn Vèo';
+        if (!empty($row[20])) return 'Yucca Zeo';
+        if (!empty($row[21])) return 'EDTA';
     }
     // public function luongVattu($row): int|string
     //  {
