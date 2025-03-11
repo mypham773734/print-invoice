@@ -49,7 +49,7 @@ class uploadFileExcel
                             'ngayIn'  => $row[4] ?? '',
                             'soDienThoai'   => $row[7] ?? '',
                             'diaChi'        => $row[5] ?? '',
-                            'tienChu'        => $row[34] ?? '',
+                            'tienChu'        => $row[33] ?? '',
                             'thanhToan'     => $row[33] ?? 0,
                             'tenHang'       => $this->tinhTenHang($row),
                             'luongTinhTien' => $this->tinhLuongTinhTien($row),
@@ -66,7 +66,7 @@ class uploadFileExcel
                             'vatTu_ZEO'       => (int) $row[20] ?? 0,
                             'vatTu_EDTA'       => (int) $row[21] ?? 0,
                             'lapPhieu'      => $row[2] ?? '',
-                            'tienChu'      => $row[34] ?? '',
+                            'tienChu'      => $row[33] ?? '',
                         ];
                     }
                     // echo "<pre>";

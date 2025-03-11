@@ -276,7 +276,7 @@ function render_invoice($invoice)
             <!-- <p class="text-end fw-bold fst-italic p-0 m-0">Ngày <?= $date ?> tháng <?= $month ?> năm <?= $year ?></p> -->
             <div>
             <p style="font-style: italic; text-align: right; padding-right: 100px;">
-    (Ghi Chú: <?= htmlspecialchars($invoice['tienChu'] ?? 'Không có dữ liệu') ?>)
+    (Số Tiền ghi bằng chữ: <?= htmlspecialchars($invoice['tienChu'] ?? 'Không có dữ liệu') ?>)
 </p>            </div>
             <div class="d-flex fw-bold justify-content-between gap-3">
 
