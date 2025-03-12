@@ -65,6 +65,9 @@ class uploadFileExcel
                             'vatTu_TAO'       => (int) $row[22] ?? 0,
                             'vatTu_ZEO'       => (int) $row[20] ?? 0,
                             'vatTu_EDTA'       => (int) $row[21] ?? 0,
+                            'mauSu_CONG'       => (int) $row[23] ?? 0,
+                            'mauSu_LON'       => (int) $row[24] ?? 0,
+                            'mauThe_LON'       => (int) $row[25] ?? 0,
                             'lapPhieu'      => $row[2] ?? '',
                             'tienChu'      => $row[33] ?? '',
                         ];
@@ -115,6 +118,9 @@ class uploadFileExcel
         if (!empty($row[22])) return 'Thức ăn Vèo';
         if (!empty($row[20])) return 'Yucca Zeo';
         if (!empty($row[21])) return 'EDTA';
+        if (!empty($row[23])) return 'Mẫu Sú Tân Nguyên +';
+        if (!empty($row[24])) return 'Mẫu Sú Tân Nguyên 68';
+        if (!empty($row[25])) return 'Mẫu Thẻ Tân Nguyên +';
     }
     // public function luongVattu($row): int|string
     //  {

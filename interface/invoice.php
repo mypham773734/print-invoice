@@ -137,6 +137,20 @@ function render_invoice($invoice)
             'quy_cach' => '1kg/thùng',
             'gia'   => '150000',
         ],
+        'mauSu_CONG' => [
+            'ten' => 'Mẫu Sú Tân Nguyên +',
+            'quy_cach' => '100con/bao',
+            'gia'   => '0',
+        ],
+        'mauSu_LON' => [
+            'ten' => 'Mẫu Sú Tân Nguyên 68',
+            'quy_cach' => '100con/bao',
+            'gia'   => '0',
+        ],'mauThe_LON' => [
+            'ten' => 'Mẫu Thẻ Tân Nguyên +',
+            'quy_cach' => '100con/bao',
+            'gia'   => '0',
+        ],
     ];
 
     $total_thung = $invoice['soThung'];
@@ -194,13 +208,13 @@ function render_invoice($invoice)
             <thead>
                 <tr>
                     <th>TT</th>
-                    <th style="width: 180px;">TÊN SẢN PHẨM</th>
+                    <th style="width: 240px;">TÊN SẢN PHẨM</th>
                     <th>QUY CÁCH</th>
-                    <th style="width: 80px;">SỐ LƯỢNG</th>
+                    <th style="width: 70px;">SỐ LƯỢNG</th>
                     <th>GIÁ</th>
                     <!-- <th>LƯỢNG TÍNH TIỀN</th> -->
-                    <th style="width: 140px;">THÀNH TIỀN</th>
-                    <th style="width: 140px;">KHUYẾN MÃI</th>
+                    <th style="width: 110px;">THÀNH TIỀN</th>
+                    <th style="width: 110px;">KHUYẾN MÃI</th>
                     <!-- <th>MẶN AO</th> -->
                     <!-- <th>THÀNH TIỀN</th> -->
                     <th style="width: 120px;">TIỀN THỰC TRẢ</th>
@@ -250,7 +264,7 @@ function render_invoice($invoice)
                             <!-- <td class="text-center"><?= $thanh_tien_VT ?></td> -->
                             <td class="text-center"><?= $khuyen_mai_VT ?></td>
                             <td class="text-center"><?= $khuyen_mai_VT ?></td>
-                            <td class="text-center">0đ</td>
+                            <td class="text-center">0</td>
                             <!-- <td></td> -->
                         </tr>
                 <?php }
@@ -265,8 +279,8 @@ function render_invoice($invoice)
                     <td class="text-center"><?= $total_thung ?></td>
                     <td></td>
                     <!-- <td class="text-center">12</td> -->
-                    <td class="text-center"><b><?= number_format($totalThanhTien, 0, ',', '.') ?> đ</b></td>
-                    <td class="text-center"><b><?= number_format($totalKhuyenMai, 0, ',', '.') ?> đ</b></td>
+                    <td class="text-center"><b><?= number_format($totalThanhTien, 0, ',', '.') ?> </b></td>
+                    <td class="text-center"><b><?= number_format($totalKhuyenMai, 0, ',', '.') ?> </b></td>
                     <td class="text-center"><?= $invoice['thanhTien'] ?? '' ?></td>
                 </tr>
             </tbody>
