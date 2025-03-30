@@ -132,11 +132,11 @@ function render_invoice($invoice)
             'quy_cach' => '10kg/bao',
             'gia'   => '160000',
         ],
-        'vatTu_TAO' => [
-            'ten' => 'Thức ăn Vèo',
-            'quy_cach' => '1kg/thùng',
-            'gia'   => '150000',
-        ],
+        // 'vatTu_TAO' => [
+        //     'ten' => 'Thức ăn Vèo',
+        //     'quy_cach' => '1kg/thùng',
+        //     'gia'   => '150000',
+        // ],
         'mauSu_CONG' => [
             'ten' => 'Mẫu Sú Tân Nguyên +',
             'quy_cach' => '100con/bao',
