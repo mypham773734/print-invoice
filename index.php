@@ -112,7 +112,7 @@ class uploadFileExcel
         if (isset($row[9]) && $row[9] === 'C1') return 'Vitamin C';
         if (isset($row[9]) && $row[9] === 'C3') return 'Vitamin C';
         if (isset($row[9]) && $row[9] === 'MEN 0,5') return 'Men HT85';
-        if (isset($row[9]) && $row[9] === 'Men HT85') return 'Men HT85';
+        if (isset($row[9]) && $row[9] === 'MEN HT85') return 'Men HT85';
         if (isset($row[9]) && $row[9] === 'Y.ZEO') return 'Yucca Zeo';
         if (isset($row[9]) && $row[9] === 'EDTA') return 'EDTA';
         if (isset($row[9]) && $row[9] === 'MSTN') return 'Mẫu Sú Tân Nguyên';
