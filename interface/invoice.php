@@ -132,25 +132,30 @@ function render_invoice($invoice)
             'quy_cach' => '10kg/bao',
             'gia'   => '160000',
         ],
+        'vatTu_DAM' => [
+            'ten' => 'Viên Đạm Hữu Cơ',
+            'quy_cach' => '5kg/bao',
+            'gia'   => '160000',
+        ],
         // 'vatTu_TAO' => [
         //     'ten' => 'Thức ăn Vèo',
         //     'quy_cach' => '1kg/thùng',
         //     'gia'   => '150000',
         // ],
-        'mauSu_CONG' => [
-            'ten' => 'Mẫu Sú Tân Nguyên +',
-            'quy_cach' => '100con/bao',
-            'gia'   => '0',
-        ],
-        'mauSu_LON' => [
-            'ten' => 'Mẫu Sú Tân Nguyên 68',
-            'quy_cach' => '100con/bao',
-            'gia'   => '0',
-        ],'mauThe_LON' => [
-            'ten' => 'Mẫu Thẻ Tân Nguyên +',
-            'quy_cach' => '100con/bao',
-            'gia'   => '0',
-        ],
+        // 'mauSu_CONG' => [
+        //     'ten' => 'Mẫu Sú Tân Nguyên +',
+        //     'quy_cach' => '100con/bao',
+        //     'gia'   => '0',
+        // ],
+        // 'mauSu_LON' => [
+        //     'ten' => 'Mẫu Sú Tân Nguyên 68',
+        //     'quy_cach' => '100con/bao',
+        //     'gia'   => '0',
+        // ],'mauThe_LON' => [
+        //     'ten' => 'Mẫu Thẻ Tân Nguyên +',
+        //     'quy_cach' => '100con/bao',
+        //     'gia'   => '0',
+        // ],
     ];
 
     $total_thung = $invoice['soThung'];
