@@ -198,13 +198,15 @@ function render_invoice($invoice)
         <div class="invoice-details">
             <div class="row">
                 <div class="col-6">
-                    <p style="margin-left: 20px;">TÊN KHÁCH HÀNG: <?= $invoice['tenKhachHang'] ?? '' ?></p>
-                    <p style="margin-left: 20px;">ĐỊA CHỈ NHẬN HÀNG: <?= $invoice['diaChi'] ?? '' ?></p>
+                    <p style="margin-left: 20px;font-size: 16px; white-space: nowrap;">TÊN KHÁCH HÀNG: <?= $invoice['tenKhachHang'] ?? '' ?></p>
+                   <p style="margin-left: 20px;font-size: 16px; white-space: nowrap;">SỐ ĐIỆN THOẠI: <?= $invoice['soDienThoai'] ?? '' ?></p>
+
                     <!-- <p>Phương thức thanh toán: Tiền mặt</p> -->
                 </div>
                 <div class="col-6">
-                    <p>NGÀY GIAO HÀNG: <?= $invoice['ngayIn'] ?? '' ?></p>
-                    <p>SỐ ĐIỆN THOẠI: <?= $invoice['soDienThoai'] ?? '' ?></p>
+                    <p style="font-size: 16px; white-space: nowrap;">NGÀY GIAO HÀNG: <?= $invoice['ngayIn'] ?? '' ?></p>
+                    <p style="font-size: 16px;">ĐỊA CHỈ NHẬN HÀNG: <?= $invoice['diaChi'] ?? '' ?></p>
+
                 </div>
             </div>
         </div>
