@@ -137,6 +137,11 @@ function render_invoice($invoice)
             'quy_cach' => '5kg/bao',
             'gia'   => '160000',
         ],
+        'vatTu_NM' => [
+            'ten' => 'Nước Mắm',
+            'quy_cach' => '6chai/Thùng',
+            'gia'   => '0',
+        ],
         // 'vatTu_TAO' => [
         //     'ten' => 'Thức ăn Vèo',
         //     'quy_cach' => '1kg/thùng',

@@ -49,7 +49,7 @@ class uploadFileExcel
                             'ngayIn'  => $row[4] ?? '',
                             'soDienThoai'   => $row[7] ?? '',
                             'diaChi'        => $row[5] ?? '',
-                            'tienChu'        => $row[24] ?? '',
+                            'tienChu'        => $row[25] ?? '',
                             // 'thanhToan'     => $row[33] ?? 0,
                             'tenHang'       => $this->tinhTenHang($row),
                             'luongTinhTien' => $this->tinhLuongTinhTien($row),
@@ -68,11 +68,12 @@ class uploadFileExcel
                             'vatTu_ZEO'       => (int) $row[16] ?? 0,
                             'vatTu_EDTA'       => (int) $row[17] ?? 0,
                             'vatTu_DAM'       => (int) $row[18] ?? 0,
+                            'vatTu_NM'       => (int) $row[19] ?? 0,
                             // 'mauSu_CONG'       => (int) $row[23] ?? 0,
                             // 'mauSu_LON'       => (int) $row[24] ?? 0,
                             // 'mauThe_LON'       => (int) $row[25] ?? 0,
                             'lapPhieu'      => $row[2] ?? '',
-                            'tienChu'      => $row[24] ?? '',
+                            'tienChu'      => $row[25] ?? '',
                         ];
                     }
                     // echo "<pre>";
@@ -183,6 +184,7 @@ class uploadFileExcel
         if (!empty($row[16])) return 'Yucca Zeo';
         if (!empty($row[17])) return 'EDTA';
         if (!empty($row[18])) return 'Viên Đạm Hữu Cơ';
+        if (!empty($row[19])) return 'Nước Mắm';
         // if (!empty($row[23])) return 'Mẫu Sú Tân Nguyên +';
         // if (!empty($row[24])) return 'Mẫu Sú Tân Nguyên 68';
         // if (!empty($row[25])) return 'Mẫu Thẻ Tân Nguyên +';
