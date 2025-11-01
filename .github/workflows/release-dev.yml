@@ -48,8 +48,6 @@ jobs:
         privateKey: ${{ secrets.SFTP_PRIVATEKEY }}
         localDir: ./
         remoteDir: ./deploy
-        forceUpload: false
-        removeExtraFilesOnServer: true
         exclude: .git,.DS_Store,**/node_modules
 
     # - name: 📂 Sync files
