@@ -54,11 +54,11 @@ jobs:
     - name: Copy files via SSH
       uses: appleboy/scp-action@v1
       with:
-        host: ${{ secrets.sftp_server }}
-        username: ${{ secrets.sftp_username }}
-        key: ${{ secrets.sftp_privatekey }}
-        port: ${{ secrets.sftp_port }}
-        source: './*'
+        host: ${{ secrets.SFTP_SERVER }}
+        username: ${{ secrets.SFTP_USERNAME }}
+        key: ${{ secrets.SFTP_PRIVATEKEY }}
+        port: ${{ secrets.SFTP_PORT }}
+        source: './'
         target: ./deploy/
         rm: true
 
