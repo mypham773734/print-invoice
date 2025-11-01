@@ -58,9 +58,8 @@ jobs:
         username: ${{ secrets.SFTP_USERNAME }}
         key: ${{ secrets.SFTP_PRIVATEKEY }}
         port: ${{ secrets.SFTP_PORT }}
-        source: './'
         target: ./deploy/
-        rm: true
+        timeout: 120s
 
     # - name: 📂 Sync files
     #   uses: SamKirkland/FTP-Deploy-Action@v4.3.5
