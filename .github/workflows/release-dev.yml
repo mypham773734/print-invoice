@@ -57,11 +57,11 @@ jobs:
         host: ${{ secrets.SFTP_SERVER }}
         username: ${{ secrets.SFTP_USERNAME }}
         key: ${{ secrets.SFTP_PRIVATEKEY }}
-        port: 2022
+        port: ${{ secrets.SFTP_PORT }}
         source: './*'
-        target: ./deploy/
+        target: /deploy
         timeout: 30s
-        debug: true
+        rm: true
 
     # - name: 📂 Sync files
     #   uses: SamKirkland/FTP-Deploy-Action@v4.3.5
