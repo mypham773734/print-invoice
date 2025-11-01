@@ -45,7 +45,7 @@ jobs:
         host: ${{ secrets.SFTP_SERVER }}
         port: ${{ secrets.SFTP_PORT }}
         username: ${{ secrets.SFTP_USERNAME }}
-        privateKey: ${{ secrets.SSH_PRIVATE_KEY }}
+        privateKey: ${{ secrets.SFTP_PRIVATEKEY }}
         localDir: ./
         remoteDir: ./deploy
 
