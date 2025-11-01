@@ -48,8 +48,7 @@ jobs:
         privateKey: ${{ secrets.SFTP_PRIVATEKEY }}
         localDir: ./
         remoteDir: ./deploy
-        compress: true
-        forceUpload: true
+        forceUpload: false
         removeExtraFilesOnServer: true
         exclude: .git,.DS_Store,**/node_modules
 
