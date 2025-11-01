@@ -48,6 +48,7 @@ jobs:
         privateKey: ${{ secrets.SFTP_PRIVATEKEY }}
         localDir: ./
         remoteDir: ./deploy
+        exclude: .git,.DS_Store,**/node_modules
 
     # - name: 📂 Sync files
     #   uses: SamKirkland/FTP-Deploy-Action@v4.3.5
