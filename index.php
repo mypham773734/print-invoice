@@ -97,20 +97,18 @@ class uploadFileExcel
 
     public function tinhTenHang($row)
     {
-        if (!empty($row[8]) && in_array(strtoupper($row[8]), ['STN', 'SRTN'])) {
-            return 'Sú Tân Nguyên';
-        }
-        if (!empty($row[8]) && in_array(strtoupper($row[8]), ['STN+', 'SRTN+'])) {
-            return 'Sú Tân Nguyên+';
-        }
+        // if (!empty($row[8]) && in_array(strtoupper($row[8]), ['STN', 'SRTN'])) {
+        //     // return 'Sú Tân Nguyên';
+        // }
+        // if (!empty($row[8]) && in_array(strtoupper($row[8]), ['STN+', 'SRTN+'])) {
+        //     // return 'Sú Tân Nguyên+';
+        // }
                 
-        // if (isset($row[9]) && $row[9] === 'STN') return 'Sú Tân Nguyên';
-        // if (isset($row[9]) && $row[9] === 'STN+') return 'Sú Tân Nguyên +';
-        if (isset($row[8]) && $row[8] === 'STN68') return 'Sú Tân Nguyên 68';
-        if (isset($row[8]) && $row[8] === 'TTN') return 'Thẻ Tân Nguyên';
-        if (isset($row[8]) && $row[8] === 'TTN+') return 'Thẻ Tân Nguyên +';
-        if (isset($row[8]) && $row[8] === 'SAĐ') return 'Sú Ao Đất';
-        if (isset($row[8]) && $row[8] === 'TSB') return 'Thẻ Sạch Bệnh';
+       
+        if (isset($row[8]) && $row[8] === 'HT-139') return 'Sú HT - 139';
+        if (isset($row[8]) && $row[8] === 'HT-69') return 'Sú HT - 69';
+        if (isset($row[8]) && $row[8] === 'HT-CORONA') return 'Thẻ HT - CORONA';
+        if (isset($row[8]) && $row[8] === 'HT-CORONA.') return 'Thẻ HT - CORONA';
         if (isset($row[8]) && $row[8] === 'C1') return 'Vitamin C';
         if (isset($row[8]) && $row[8] === 'C3') return 'Vitamin C';
         if (isset($row[8]) && $row[8] === 'MEN 0,5') return 'Men HT85';
@@ -124,24 +122,26 @@ class uploadFileExcel
         if (isset($row[8]) && $row[8] === 'MTTN') return 'Mẫu Thẻ Tân Nguyên';
         if (isset($row[8]) && $row[8] === 'MTTN+') return 'Mẫu Thẻ Tân Nguyên +';
         if (isset($row[8]) && $row[8] === 'CUA') return 'Cua Tiêu 2';
+        if (isset($row[8]) && $row[8] === 'NM') return 'Nước Mắm';
+
       
     }
 
     public function tinhMau($row): int|string
     {
-        if (!empty($row[8]) && in_array(strtoupper($row[8]), ['STN', 'SRTN'])) {
-            return '14.000con/thùng';
-        }
-        if (!empty($row[8]) && in_array(strtoupper($row[8]), ['STN+', 'SRTN+'])) {
-            return '12.000con/thùng';
-        }
-        // if (isset($row[9]) && $row[9] === 'STN') return '14.000con/thùng';
-        // if (isset($row[9]) && $row[9] === 'STN+') return '12.000con/thùng';      
-        if (isset($row[8]) && $row[8] === 'STN68') return '6.000con/thùng';
-        if (isset($row[8]) && $row[8] === 'TTN') return '14.000con/thùng';
-        if (isset($row[8]) && $row[8] === 'TTN+') return '12.000con/thùng';      
-        if (isset($row[8]) && $row[8] === 'SAĐ') return '7.000con/thùng';
-        if (isset($row[8]) && $row[8] === 'TSB') return '7.000con/thùng';
+       if (isset($row[8]) && strtoupper(trim($row[8])) === 'HT-69' && isset($row[11]) && (int)$row[11] === 780000) {
+    return '12.000con/thùng';
+}
+if (isset($row[8]) && strtoupper(trim($row[8])) === 'HT-69' && isset($row[11]) && (int)$row[11] === 1100000) {
+    return '10.000con/thùng';
+}
+        
+             
+        if (isset($row[8]) && $row[8] === 'HT-139') return '7.000con/thùng';
+        // if (isset($row[8]) && $row[8] === 'HT69') return '12.000con/thùng';
+        // if (isset($row[8]) && $row[8] === 'HT69') return '10.000con/thùng';
+        if (isset($row[8]) && $row[8] === 'HT-CORONA') return '12.000con/thùng';
+        if (isset($row[8]) && $row[8] === 'HT-CORONA.') return '8.000con/thùng';
         if (isset($row[8]) && $row[8] === 'C1') return '1kg/túi';
         if (isset($row[8]) && $row[8] === 'C3') return '3kg/túi';
         if (isset($row[8]) && $row[8] === 'MEN 0,5') return '0,5kg/túi';
@@ -155,25 +155,9 @@ class uploadFileExcel
         if (isset($row[8]) && $row[8] === 'MTTN') return '100con/bao';
         if (isset($row[8]) && $row[8] === 'MTTN+') return '100con/bao';
         if (isset($row[8]) && $row[8] === 'CUA') return '500con/khây';
+        if (isset($row[8]) && $row[8] === 'NM') return '6Chai/thùng';
 
 
-
-
-
-
-
-
-
-
-
-
-
-        // if (!empty($row[8])) return '14.000con/thùng';
-        // if (!empty($row[9])) return '12.000con/thùng';
-        // if (!empty($row[10])) return '6.000con/thùng';
-        // if (!empty($row[11])) return '14.000con/thùng';
-        // if (!empty($row[12])) return '12.000con/thùng';
-        // if (!empty($row[13])) return '500';
     }
 
     public function tenVatTu($row)
@@ -189,35 +173,7 @@ class uploadFileExcel
         // if (!empty($row[24])) return 'Mẫu Sú Tân Nguyên 68';
         // if (!empty($row[25])) return 'Mẫu Thẻ Tân Nguyên +';
     }
-    // public function luongVattu($row): int|string
-    //  {
-    //     if (!empty($row[18])) return '3kg/túi';
-    //     if (!empty($row[19])) return '1kg/túi';
-    //     if (!empty($row[20])) return '5kg/thùng';
-    //     if (!empty($row[21])) return '10kg/bao';
-    //     if (!empty($row[22])) return '10kg/bao';
-    // }
-
-    // public function tinhLuongKhuyenMai($row)
-    // {
-    //     $result = 0;
-    //     $character_search = str_split(',. ');
-    //     $khuyenMai = 0;
-    //     if (!empty($row[16])) {
-    //         $khuyenMai = strval(str_replace($character_search, '', $row[16]));
-    //     }
-
-    //     $gia = 0;
-    //     if (!empty($row[15])) {
-    //         $gia = strval(str_replace($character_search, '', $row[15]));
-    //     }
-
-    //     $result = ($khuyenMai != 0 && $gia != 0) ? (int) round($khuyenMai / $gia) : 0;
-
-    //     return $result;
-    // }
     
-
     public function tinhLuongTinhTien($row)
     {
         $soGiaTien = isset($row[11]) ? (int) str_replace([',', '.'], '', $row[11]) : 0;        $tongThung =  $row[9] ?? 0;
@@ -226,20 +182,7 @@ class uploadFileExcel
         $luongTinhTien = (int) $tongThung * $soGiaTien;
         return number_format($luongTinhTien, 0, ',', '.'); // Định dạng số tiền
     }
-    // public function tinhLuongTinhTien($row)
-    // {
-    //     $luongKhuyenMai = $this->tinhLuongKhuyenMai($row);
-    //     $tongThung = $row[8] ?? $row[9] ?? $row[10] ?? $row[11] ?? $row[12] ?? $row[13] ?? 0;
-
-    //     if ($tongThung == 0) return 0;
-    //     $luongTinhTien = (int) $tongThung - $luongKhuyenMai;
-    //     return $luongTinhTien;
-    // }
-
-    // public function render_hoa_don($dataExcel)
-    // {
-    //     require './interface/invoice.php';
-    // }
+    
     public function render_hoa_don($dataExcel, $totalThanhTien, $totalKhuyenMai)
 {
     require './interface/invoice.php';

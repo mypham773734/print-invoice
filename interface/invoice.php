@@ -89,6 +89,72 @@
                 page-break-inside: avoid;
             }
         }
+        .invoice-header-wrap {
+    display: flex;
+    align-items: stretch; /* LOGO cao đúng bằng nội dung bên phải */
+    margin-bottom: 10px;
+}
+
+.logo-box {
+    width: 110px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-box img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+.header-content {
+    flex: 1;
+    text-align: center;
+}
+
+        .invoice * {
+    position: relative;
+    z-index: 2;
+}
+
+        .invoice {
+    position: relative;
+    z-index: 1;
+}
+
+/* LOGO WATERMARK */
+.invoice {
+    position: relative;
+}
+
+/* .invoice::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 90%;
+    height:90%;
+    background: url("./assets/logo.png") no-repeat center center;
+    background-size: contain;
+    opacity: 0.15;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    pointer-events: none;
+} */
+
+.invoice * {
+    position: relative;
+    z-index: 1;
+}
+
+@media print {
+    body {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+}
+
     </style>
 </head>
 
@@ -120,27 +186,27 @@ function render_invoice($invoice)
         'vatTu_M' => [
             'ten' => 'Men HT85',
             'quy_cach' => '3kg/túi',
-            'gia'   => '150000',
+            'gia'   => '200000',
         ],        
         'vatTu_ZEO' => [
             'ten' => 'Yucca Zeo',
             'quy_cach' => '10kg/bao',
-            'gia'  => '160000',
+            'gia'  => '190000',
         ],
         'vatTu_EDTA' => [
             'ten' => 'EDTA',
             'quy_cach' => '10kg/bao',
-            'gia'   => '160000',
+            'gia'   => '190000',
         ],
         'vatTu_DAM' => [
             'ten' => 'Viên Đạm Hữu Cơ',
             'quy_cach' => '5kg/bao',
-            'gia'   => '160000',
+            'gia'   => '180000',
         ],
         'vatTu_NM' => [
             'ten' => 'Nước Mắm',
             'quy_cach' => '6chai/Thùng',
-            'gia'   => '0',
+            'gia'   => '160000',
         ],
         // 'vatTu_TAO' => [
         //     'ten' => 'Thức ăn Vèo',
@@ -184,20 +250,26 @@ function render_invoice($invoice)
     $ho_ten_lap_phieu = get_name($nhan_vien, $ten_lap_phieu);
 ?>
     <div class="invoice no-page-break-inside">
-        <div class="invoice-header">
-            <!-- <div class="d-flex justify-content-between gap-3"> -->
-            <!-- <h6 class="fw-bold" style="white-space: nowrap">TÔM GIỐNG TÂN NGUYÊN</h6> -->
-            <div style="text-align: center;">
-                <h6 class="fw-bold" style="white-space: nowrap;">TÔM GIỐNG TÂN NGUYÊN</h6>
-                <h6 class="fw-bold m-0" style="font-size: 13px;">ĐỊA CHỈ: 246, YÊN THẠNH, THƯỜNG THẠNH, CÁI RĂNG, TP CẦN THƠ</h6>
-                <p class="m-0">ĐT: 0973 819 819</p>
-            </div>
+        <div class="invoice-header-wrap">
+    <div class="logo-box">
+        <img src="./assets/logo.jpg" alt="Logo HT">
+    </div>
 
-        </div>
-        <h6 style="text-align: center;" class="fw-bold my-2">PHIẾU GIAO HÀNG KÈM HÓA ĐƠN THU TIỀN</h6>
-        <h6 style="text-align: center;">
-            <i>(Phiếu giao hàng này không có giá trị thay thế hóa đơn tài chính)</i>
+    <div class="header-content">
+        <h6 class="fw-bold m-0">Công Ty TY TNHH MTV HT85</h6>
+        <h6 class="fw-bold m-0" style="font-size:13px;">
+            ĐC: Yên Thạnh, Cái Răng, Cần Thơ
         </h6>
+        <p class="m-0">ĐT: 0973 819 819</p>
+
+        <h6 class="fw-bold my-2">
+            PHIẾU GIAO HÀNG KÈM HÓA ĐƠN THU TIỀN
+        </h6>
+        <i style="font-size:13px;">
+            (Phiếu giao hàng này không có giá trị thay thế hóa đơn tài chính)
+        </i>
+    </div>
+</div>
 
 
         <div class="invoice-details">
