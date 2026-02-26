@@ -200,7 +200,7 @@ function render_invoice($invoice)
         ],
         'vatTu_DAM' => [
             'ten' => 'Viên Đạm Hữu Cơ',
-            'quy_cach' => '5kg/bao',
+            'quy_cach' => '4kg/bao',
             'gia'   => '180000',
         ],
         'vatTu_NM' => [
@@ -256,7 +256,7 @@ function render_invoice($invoice)
     </div>
 
     <div class="header-content">
-        <h6 class="fw-bold m-0">Công Ty TY TNHH MTV HT85</h6>
+        <h6 class="fw-bold m-0">Công Ty TNHH MTV HT85</h6>
         <h6 class="fw-bold m-0" style="font-size:13px;">
             ĐC: Yên Thạnh, Cái Răng, Cần Thơ
         </h6>
@@ -375,7 +375,11 @@ function render_invoice($invoice)
             <div>
             <p style="font-style: italic; text-align: right; padding-right: 100px;">
     (Số tiền ghi bằng chữ: <?= htmlspecialchars($invoice['tienChu'] ?? 'Không có dữ liệu') ?>)
-</p>            </div>
+</p>   
+<p class="text-center"> CHÚC BÀ CON NĂM MỚI VẠN SỰ NHƯ Ý</p>
+<p class="text-center"> MÙA NÀO CŨNG THẮNG, AO NÀO CŨNG ĐẦY TÔM !!!</p>
+
+         </div>
             <div class="d-flex fw-bold justify-content-between gap-3">
 
                 <div>
