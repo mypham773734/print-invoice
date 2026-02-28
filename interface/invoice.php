@@ -376,8 +376,6 @@ function render_invoice($invoice)
             <p style="font-style: italic; text-align: right; padding-right: 100px;">
     (Số tiền ghi bằng chữ: <?= htmlspecialchars($invoice['tienChu'] ?? 'Không có dữ liệu') ?>)
 </p>   
-<!-- <p class="text-center"> CHÚC BÀ CON NĂM MỚI VẠN SỰ NHƯ Ý</p>
-<p class="text-center"> MÙA NÀO CŨNG THẮNG, AO NÀO CŨNG ĐẦY TÔM !!!</p> -->
 
          </div>
             <div class="d-flex fw-bold justify-content-between gap-3">
