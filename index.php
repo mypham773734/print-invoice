@@ -131,42 +131,41 @@ class uploadFileExcel
       
     }
 
-    public function tinhMau($row): int|string
-    {
-       if (isset($row[8]) && strtoupper(trim($row[8])) === 'HT-69' && isset($row[11]) && (int)$row[11] === 780000) {
-    return '12.000con/thùng';
-}
-if (isset($row[8]) && strtoupper(trim($row[8])) === 'HT-69' && isset($row[11]) && (int)$row[11] === 1100000) {
-    return '10.000con/thùng';
-}
-        
-             
-        if (isset($row[8]) && $row[8] === 'HT-139') return '7.000con/thùng';
-        // if (isset($row[8]) && $row[8] === 'HT69') return '12.000con/thùng';
-        // if (isset($row[8]) && $row[8] === 'HT69') return '10.000con/thùng';
-        if (isset($row[8]) && $row[8] === 'HT-CORONA') return '12.000con/thùng';
-        if (isset($row[8]) && $row[8] === 'HT-CORONA.') return '8.000con/thùng';
-        if (isset($row[8]) && $row[8] === 'MHT-CORONA') return '200con/Bao';
-        if (isset($row[8]) && $row[8] === 'MHT-139') return '200con/Bao';
-        if (isset($row[8]) && $row[8] === 'MHT-69') return '200con/Bao';
-        if (isset($row[8]) && $row[8] === 'MHT-CORONA.') return '200con/Bao';
-        if (isset($row[8]) && $row[8] === 'C1') return '1kg/túi';
-        if (isset($row[8]) && $row[8] === 'C3') return '3kg/túi';
-        if (isset($row[8]) && $row[8] === 'MEN 0,5') return '0,5kg/túi';
-        if (isset($row[8]) && $row[8] === 'MEN HT85') return '3kg/túi';
-        if (isset($row[8]) && $row[8] === 'Y.ZEO') return '10kg/bao';
-        if (isset($row[8]) && $row[8] === 'EDTA') return '10kg/bao';
-        if (isset($row[8]) && $row[8] === 'ĐẠM') return '4kg/bao';
-        if (isset($row[8]) && $row[8] === 'MSTN') return '100con/bao';
-        if (isset($row[8]) && $row[8] === 'MSTN+') return '100con/bao';
-        if (isset($row[8]) && $row[8] === 'MS68') return '100con/bao';
-        if (isset($row[8]) && $row[8] === 'MTTN') return '100con/bao';
-        if (isset($row[8]) && $row[8] === 'MTTN+') return '100con/bao';
-        if (isset($row[8]) && $row[8] === 'CUA') return '500con/khây';
-        if (isset($row[8]) && $row[8] === 'NM') return '6Chai/thùng';
-
-
+   public function tinhMau($row): int|string
+{
+    if (isset($row[8]) && strtoupper(trim($row[8])) === 'HT-69' && isset($row[11]) && (int)$row[11] === 780000) {
+        return '12.000con/thùng';
     }
+
+    if (isset($row[8]) && strtoupper(trim($row[8])) === 'HT-69' && isset($row[11]) && (int)$row[11] === 1100000) {
+        return '10.000con/thùng';
+    }
+
+    if (isset($row[8]) && $row[8] === 'HT-139') return '7.000con/thùng';
+    if (isset($row[8]) && $row[8] === 'HT-CORONA') return '12.000con/thùng';
+    if (isset($row[8]) && $row[8] === 'HT-CORONA.') return '8.000con/thùng';
+    if (isset($row[8]) && $row[8] === 'MHT-CORONA') return '200con/Bao';
+    if (isset($row[8]) && $row[8] === 'MHT-139') return '200con/Bao';
+    if (isset($row[8]) && $row[8] === 'MHT-69') return '200con/Bao';
+    if (isset($row[8]) && $row[8] === 'MHT-CORONA.') return '200con/Bao';
+    if (isset($row[8]) && $row[8] === 'C1') return '1kg/túi';
+    if (isset($row[8]) && $row[8] === 'C3') return '3kg/túi';
+    if (isset($row[8]) && $row[8] === 'MEN 0,5') return '0,5kg/túi';
+    if (isset($row[8]) && $row[8] === 'MEN HT85') return '3kg/túi';
+    if (isset($row[8]) && $row[8] === 'Y.ZEO') return '10kg/bao';
+    if (isset($row[8]) && $row[8] === 'EDTA') return '10kg/bao';
+    if (isset($row[8]) && $row[8] === 'ĐẠM') return '4kg/bao';
+    if (isset($row[8]) && $row[8] === 'MSTN') return '100con/bao';
+    if (isset($row[8]) && $row[8] === 'MSTN+') return '100con/bao';
+    if (isset($row[8]) && $row[8] === 'MS68') return '100con/bao';
+    if (isset($row[8]) && $row[8] === 'MTTN') return '100con/bao';
+    if (isset($row[8]) && $row[8] === 'MTTN+') return '100con/bao';
+    if (isset($row[8]) && $row[8] === 'CUA') return '500con/khây';
+    if (isset($row[8]) && $row[8] === 'NM') return '6Chai/thùng';
+
+    // ✅ BẮT BUỘC PHẢI CÓ
+    return '';
+}
 
     public function tenVatTu($row)
     {
