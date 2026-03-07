@@ -206,7 +206,7 @@ function render_invoice($invoice)
         'vatTu_NM' => [
             'ten' => 'Nước Mắm',
             'quy_cach' => '6chai/Thùng',
-            'gia'   => '160000',
+            'gia'   => '0',
         ],
         // 'vatTu_TAO' => [
         //     'ten' => 'Thức ăn Vèo',
